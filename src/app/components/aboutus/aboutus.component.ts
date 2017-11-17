@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {DataService} from '../services/data.service'
+import {DataService} from '../../shared/data.service'
 
 @Component({
   selector: 'app-aboutus',
@@ -12,7 +12,7 @@ export class AboutusComponent implements OnInit {
  constructor(private _dataservice:DataService) {
   }
  ngOnInit() {
-   this._dataservice.GetPost('/checksession',"").subscribe(response => this.MyArray=response)
+   this._dataservice.PostService('checksession',"").subscribe(response => console.log(response))
  //  this.MyArray=this._dataservice.getsession('http://localhost:5000/sessiondata')
  //  .subscribe(response => this.MyArray=response)
  // }

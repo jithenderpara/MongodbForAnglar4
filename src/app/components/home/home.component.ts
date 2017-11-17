@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {DataService} from '../services/data.service'
+import {DataService} from '../../shared/data.service'
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
  constructor(private _dataservice:DataService) {
   }
  ngOnInit() {
-   this._dataservice.GetPost('http://localhost:5000/login',"").subscribe(response => this.MyArray=response)
+   this._dataservice.PostService('http://localhost:5000/login',"").subscribe(response => this.MyArray=response)
  //  this.MyArray=this._dataservice.GetPostMethod()
  //  .subscribe(response => this.MyArray=response)
  // }

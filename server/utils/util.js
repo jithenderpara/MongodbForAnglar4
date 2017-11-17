@@ -38,11 +38,12 @@ module.exports.createApp = function () {
     }));
 
     app.use(express.static(path.join(__dirname, '../../dist')));
-    app.get('/login', user.login);
+    //app.get('/login', user.login);
     app.post('/login', user.login_new);
     app.post('/register', user.signup);
     app.get('/checksession', user.checksession);
     app.get('/logout', user.logout);
+    app.post('/checksession',user.checksession)
     
     // app.use(require("./services/auth"))
     // app.use(sendViewMiddleware)
@@ -53,6 +54,8 @@ module.exports.createApp = function () {
         console.log(req.session.user)
           res.sendfile(path.resolve('../dist/index.html'));
       });
+
+
     return app;
 }
 //sending a path to Get methods

@@ -4,18 +4,24 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import{RouterModule} from '@angular/router';
 
+import{AuthGuard} from './shared/user/auth.guard.service'
+
 import { AppComponent } from './app.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { ContactusComponent } from './components/contactus/contactus.component';
 import { HomeComponent } from './components/home/home.component';
-import {DataService} from './components/services/data.service';
+import {DataService} from './shared/data.service';
+import { LoginComponent } from './components/login/login.component';
+import {AuthService} from './shared/user/auth.service'
+
 
 @NgModule({
   declarations: [
     AppComponent,
     AboutusComponent,
     ContactusComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -27,16 +33,24 @@ import {DataService} from './components/services/data.service';
         component:HomeComponent
       },
       {
+        path:'login',
+        component:LoginComponent
+      },
+      {
         path:"about",
-        component:AboutusComponent
+        component:AboutusComponent,
+        canActivate: [AuthGuard]
       },
       {
         path:"contactus",
-        component:ContactusComponent
-      }
+        component:ContactusComponent,
+        canActivate: [AuthGuard]
+      },
+      { path: '', redirectTo: 'login', pathMatch: 'full' },
+      { path: '**', redirectTo: 'login', pathMatch: 'full' },
     ])
   ],
-  providers: [DataService],
+  providers: [DataService,AuthService,AuthGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

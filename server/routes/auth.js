@@ -98,8 +98,12 @@ exports.login = function(req, res, next) {
     utils.createUserSession(req, res, user);
         res.send("register..")
 }
-exports.checksession = function(req, res, next) {  
+exports.checksession = function(req, res, next) { 
+    if(req.session.user) 
         res.send(req.session.user)
+    else{
+         res.send({msg:"session expired!"})
+    }
 }
 exports.logout = function(req, res, next) { 
        // utils.createUserSession(req, res, req.session.user); 

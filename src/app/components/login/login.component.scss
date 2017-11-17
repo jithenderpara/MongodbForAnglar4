@@ -1,0 +1,21 @@
+$fcolor:#fe5d3c;
+$bgcolor:#eaecf1;
+$fontsize:14px;
+$bColor:gray;
+$white:#fff;
+$btn:#fe5d3c;
+$imgpath:"../../../assets/images/";
+
+p{
+    color:$fcolor;
+    font-size: $fontsize
+}
+.content{
+    background: url($imgpath+"bg.png")
+    h1{
+        color: $bgcolor;
+    }
+    input{
+        border: 1px solid $bgcolor;
+    }
+}
